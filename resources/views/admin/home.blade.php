@@ -2,4 +2,4 @@
 
 @section('content')
     <h1>dashboard PVT</h1>
-@endsection
+@endsection  
