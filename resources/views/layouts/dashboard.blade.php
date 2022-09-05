@@ -51,8 +51,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.home') }}">
-                                Dashboard
+                            <a class="nav-link active" href="{{ route('admin.posts.create') }}">
+                                Crea un nuovo post
                             </a>
                         </li>
                     </ul>
