@@ -47,6 +47,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:60000'
         ]);
+        
         $form_data = $request->all();
         
         $new_post = new Post();
