@@ -47,7 +47,25 @@ class PostController extends Controller
         
         $new_post = new Post();
         $new_post->fill($form_data);
-        $new_post->slug = Str::slug($new_post->title, '-');
+
+        // Assegno lo slug ad una variabile
+        $slug_to_save = Str::slug($new_post->title, '-');
+        // Salvo uno slug base uguale a quello da salvare
+        $slug_base = $slug_to_save;
+        // Verifico se questo slug è presente nel database
+        $existing_slug_post = Post::where('slug', '=', $slug_to_save)->first();
+        // Finchè non trovo uno slug libero, appendo un numero allo slug base
+        $counter = 1;
+        while($existing_slug_post) {
+            // Creo un nuovo slug con $counter
+            $slug_to_save = $slug_base . '-' . $counter;
+            // Verifico se questo slug è presente nel database
+            $existing_slug_post = Post::where('slug', '=', $slug_to_save)->first();
+            // incremento il counter
+            $counter++;
+        }
+
+        $new_post->slug = $slug_to_save;
         $new_post->save();
         
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
