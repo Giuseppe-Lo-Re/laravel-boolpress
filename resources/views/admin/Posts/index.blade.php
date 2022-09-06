@@ -2,11 +2,12 @@
 
 @section('content')
     <h1>Lista post</h1>
+
+    {{-- Alert confirm deleted message --}}
     @if ($show_deleted_message === 'yes')
         <div class="alert alert-success" role="alert">
             Post eliminato con successo!
         </div>
-        
     @endif
 
     <div class="row row-cols-2 gy-5">

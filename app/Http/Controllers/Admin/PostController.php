@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.posts.create', ['created' => 'yes']);
     }
 
     /**
@@ -71,9 +71,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+
+        // raccolgo tutte le richieste 
+        $request_info = $request->all();
+
+        // la variabile $show_created_message sarà uguale a 'created' se presente, altrimenti sarà uguale a 'null'
+        $show_created_message = isset($request_info['created']) ? $request_info['created'] : null;
+        
+        $data = [
+            'posts' => $posts,
+            'show_created_message' => $show_created_message
+        ];
 
         // Prendo la data odierna
         $now = Carbon::now();

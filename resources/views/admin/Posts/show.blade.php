@@ -1,6 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+    {{-- Alert confirm created message --}}
+    @if ($show_created_message === 'yes')
+        <div class="alert alert-success" role="alert">
+            Post creato con successo!
+        </div>
+    @endif
+
     {{-- Title --}}
     <h1>{{ $post->title }}</h1>
 
