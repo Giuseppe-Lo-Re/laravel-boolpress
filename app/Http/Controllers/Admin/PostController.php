@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create', ['created' => 'yes']);
+        return view('admin.posts.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class PostController extends Controller
 
         $new_post->save();
         
-        return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
+        return redirect()->route('admin.posts.show', ['post' => $new_post->id,'created' => 'yes']);
     } 
 
     /**
@@ -81,11 +81,6 @@ class PostController extends Controller
         // la variabile $show_created_message sarà uguale a 'created' se presente, altrimenti sarà uguale a 'null'
         $show_created_message = isset($request_info['created']) ? $request_info['created'] : null;
         
-        $data = [
-            'posts' => $posts,
-            'show_created_message' => $show_created_message
-        ];
-
         // Prendo la data odierna
         $now = Carbon::now();
 
@@ -94,6 +89,7 @@ class PostController extends Controller
 
         $data = [
             'post' => $post,
+            'show_created_message' => $show_created_message,
             'created_days_ago' => $created_days_ago
         ];
 
