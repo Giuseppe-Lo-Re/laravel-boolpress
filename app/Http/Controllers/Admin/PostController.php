@@ -185,6 +185,7 @@ class PostController extends Controller
         return $slug_to_save;
     }
 
+    // Definisce le validazione per i campi del form
     protected function getValidationRules() {
         return [
             'title' => 'required|max:255',
