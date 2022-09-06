@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use illuminate\Support\Str;
 use App\Post;
 
 class PostsTableSeeder extends Seeder
