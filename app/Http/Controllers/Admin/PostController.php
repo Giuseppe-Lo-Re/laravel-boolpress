@@ -101,7 +101,21 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $form_data = $request->all();
-        
+
+        // Prendo il post da modificare e l'aggiorno
+
+        // Genero un nuovo slug dal titolo solo se quest'ultimo è diverso dall'originale   
+        $post_to_update = Post::FindOrFail($id);
+
+        if($form_data['title'] !== $post_to_update->title) {
+            $form_data['slug'] = $this->getFreeSlugFromTitle($form_data['title']);
+        } else {
+            $form_data['slug'] = $post_to_update->slug;
+        }
+        // Aggiorno il post sul database con quello modificato dell'admin
+        $post_to_update->update($form_data);
+
+        return redirect()->route('admin.posts.show', ['post' => $post_to_update->id]);
     }
  
     /**
