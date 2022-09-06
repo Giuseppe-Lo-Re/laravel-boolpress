@@ -14,12 +14,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $posts = Post::all();
 
+        // raccolgo tutte le richieste 
+        $request_info = $request->all();
+
+        // la variabile $show_deleted_message sarà uguale a 'deleted' se presente, altrimenti sarà uguale a 'null'
+        $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
+        
         $data = [
-            'posts' => $posts
+            'posts' => $posts,
+            'show_deleted_message' => $show_deleted_message
         ];
 
         return view('admin.posts.index', $data);
@@ -135,7 +142,7 @@ class PostController extends Controller
         $post_to_delete->delete();
 
         // Reindirizzo l'admin alla pagina index
-        return redirect()->route('admin.posts.index', ['post' => $post_to_delete->id]);
+        return redirect()->route('admin.posts.index', ['deleted' => 'yes']);
     }
 
     // Genera uno slug unico dal titolo

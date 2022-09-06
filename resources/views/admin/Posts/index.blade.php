@@ -1,7 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <h1>Lista Post</h1>
+    <h1>Lista post</h1>
+    @if ($show_deleted_message === 'yes')
+        <div class="alert alert-success" role="alert">
+            Post eliminato con successo!
+        </div>
+        
+    @endif
 
     <div class="row row-cols-2 gy-5">
         @foreach ($posts as $post)
