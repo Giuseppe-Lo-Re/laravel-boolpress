@@ -5,10 +5,16 @@
     <h1>{{ $post->title }}</h1>
 
     {{-- Created at --}}
-    <div>Creato il:{{ $post->created_at }}</div>
+    <div>Creato: {{ $post->created_at->format('l, j F Y') }}, 
+        @if ($created_days_ago > 0)
+            {{$created_days_ago }} giorni fa
+        @else 
+            oggi
+        @endif 
+    </div>
 
     {{-- Updated at --}}
-    <div>Ultima modifica:{{ $post->updated_at }}</div>
+    <div>Ultima modifica: {{ $post->created_at->format('l, j F Y') }}</div>
 
     {{-- Slug --}}
     <div>Slug:{{ $post->slug }}</div>
