@@ -25,7 +25,7 @@
     <div>Ultima modifica: {{ $post->created_at->format('l, j F Y') }}</div>
 
     {{-- Slug --}}
-    <div>Slug:{{ $post->slug }}</div>
+    <div>Slug: {{ $post->slug }}</div>
     
     {{-- Content --}}
     <h3 class="mt-3">Contenuto</h3>

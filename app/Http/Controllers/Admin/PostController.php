@@ -25,6 +25,7 @@ class PostController extends Controller
         // la variabile $show_deleted_message sarà uguale a 'deleted' se presente, altrimenti sarà uguale a 'null'
         $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         
+        // Salvo le variabili in un array che passerò alla view
         $data = [
             'posts' => $posts,
             'show_deleted_message' => $show_deleted_message
@@ -87,6 +88,7 @@ class PostController extends Controller
         // Calcolo la differenza
         $created_days_ago = $post->created_at->diffInDays($now);
 
+        // Salvo le variabili in un array che passerò alla view
         $data = [
             'post' => $post,
             'show_created_message' => $show_created_message,
@@ -106,6 +108,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        // Salvo le variabili in un array che passerò alla view
         $data = [
             'post' => $post
         ];
