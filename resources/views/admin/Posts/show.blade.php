@@ -16,4 +16,7 @@
     {{-- Content --}}
     <h3 class="mt-3">Contenuto</h3>
     <p>{{ $post->content }}</p>
+
+    {{-- Button link  --}}
+    <a class="btn btn-success" href="{{ route('admin.posts.edit', ['post' => $post->id])}}">Modifica post</a>
 @endsection 

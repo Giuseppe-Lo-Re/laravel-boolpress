@@ -20,16 +20,16 @@
         {{-- Title --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
-            <input type="text" class="form-control" id="title" name="title" value="">
+            <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}">
         </div>
 
         {{-- Content --}}
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto</label>
-            <textarea class="form-control" id="content" rows="10" name="content"></textarea>
+            <textarea class="form-control" id="content" rows="10" name="content">{{ $post->content }}</textarea>
         </div>     
           
         {{-- Button --}}
-          <input type="submit" value="Modifica post">
+          <input class="btn btn-info" type="submit" value="Salva modifiche">
     </form>    
 @endsection

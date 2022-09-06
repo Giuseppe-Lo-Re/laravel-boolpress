@@ -30,6 +30,6 @@
         </div>     
           
         {{-- Button --}}
-          <input type="submit" value="Salva post">
+          <input class="btn btn-warning" type="submit" value="Salva post">
     </form>
 @endsection 
