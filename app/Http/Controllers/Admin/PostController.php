@@ -100,6 +100,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate($this->getValidationRules());
+
         $form_data = $request->all();
 
         // Prendo il post da modificare e l'aggiorno
