@@ -106,7 +106,7 @@ class PostController extends Controller
         $form_data = $request->all();
 
         // Genero un nuovo slug dal titolo solo se quest'ultimo è diverso dall'originale   
-        $post_to_update = Post::FindOrFail($id);
+        $post_to_update = Post::findOrFail($id);
 
         if($form_data['title'] !== $post_to_update->title) {
             $form_data['slug'] = $this->getFreeSlugFromTitle($form_data['title']);
@@ -128,7 +128,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Raccolgo tutti i post da eliminare attraverso l'id
+        $post_to_delete = Post::findOrFail($id);
+
+        // Elimino il post da eliminare
+        $post_to_delete->delete();
+
+        // Reindirizzo l'admin alla pagina index
+        return redirect()->route('admin.posts.index', ['post' => $post_to_delete->id]);
     }
 
     // Genera uno slug unico dal titolo

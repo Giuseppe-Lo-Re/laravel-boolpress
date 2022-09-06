@@ -17,6 +17,15 @@
     <h3 class="mt-3">Contenuto</h3>
     <p>{{ $post->content }}</p>
 
-    {{-- Button link  --}}
-    <a class="btn btn-success" href="{{ route('admin.posts.edit', ['post' => $post->id])}}">Modifica post</a>
+    {{-- Modification Button (Link) --}}
+    <a class="btn btn-primary" href="{{ route('admin.posts.edit', ['post' => $post->id])}}">Modifica post</a>
+
+    {{-- Delete Button (Form) --}}
+    <form class="mt-2" action="{{ route('admin.posts.destroy', ['post' => $post->id])}}" method="post">
+        @csrf
+        @method('DELETE')
+
+        <input class="btn btn-danger" type="submit" value="Elimina   post" onCLick="return confirm('Stai per eliminare un post. Sei sicuro?')">
+    </form>
+    
 @endsection 
