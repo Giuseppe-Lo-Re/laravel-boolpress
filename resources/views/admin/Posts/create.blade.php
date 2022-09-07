@@ -17,6 +17,19 @@
     <form action="{{ route('admin.posts.store') }}" method="post">
         @csrf
 
+        {{-- Category --}}
+        <div class="mb-3">
+            <label for="category_id">Categoria:</label>
+            <select class="form-select" id="category_id" name="category_id">
+                <option value="">nessuna</option>
+
+                {{-- Stampo id e name di categories nelle value --}}
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         {{-- Title --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
