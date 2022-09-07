@@ -24,7 +24,7 @@ class AddCategoryIdToPost extends Migration
             $table->foreign('category_id')
                   ->references('id')
                   ->on('categories')
-                  ->onDelete('set null');
+                  ->onDelete('set null'); //  in caso di eliminazione di una categoria, il post con la stessa viene settata a null
         });
     }
 
