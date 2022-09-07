@@ -17,7 +17,7 @@
         @if ($created_days_ago > 0)
             {{$created_days_ago }} giorni fa
         @else 
-            oggi
+            oggi 
         @endif 
     </div>
 
@@ -26,9 +26,12 @@
 
     {{-- Slug --}}
     <div>Slug: {{ $post->slug }}</div>
+
+    {{-- Category --}}
+    <div>Categoria: {{ $post->category ? $post->category->name : 'nessuna' }}</div>
     
     {{-- Content --}}
-    <h3 class="mt-3">Contenuto</h3>
+    <h3 class="mt-3">Contenuto</h3> 
     <p>{{ $post->content }}</p>
 
     {{-- Modification Button (Link) --}}
