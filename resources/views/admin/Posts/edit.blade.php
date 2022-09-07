@@ -17,6 +17,20 @@
     <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
         @csrf
         @method('PUT')
+
+        {{-- Category --}}
+        <div class="mb-3">
+            <label for="category_id">Categoria:</label>
+            <select class="form-select" id="category_id" name="category_id">
+                <option value="">nessuna</option>
+
+                {{-- Stampo id e name di categories nelle value --}}
+                @foreach ($categories as $category)     
+                    <option value="{{ $category->id }}" {{ old('category_id', $post->category_id) == $category->id ? 'selected' : ''}}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         {{-- Title --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>

@@ -114,11 +114,16 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        // Raccolgo tutte le categorie
+        $categories = Category::all();
+
+    
         $post = Post::findOrFail($id);
 
         // Salvo le variabili in un array che passerò alla view
         $data = [
-            'post' => $post
+            'post' => $post,
+            'categories' => $categories
         ];
 
         return view('admin.posts.edit', $data);
