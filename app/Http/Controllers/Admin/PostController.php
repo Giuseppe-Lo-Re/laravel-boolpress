@@ -57,7 +57,7 @@ class PostController extends Controller
         return view('admin.posts.create', $data);
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -75,7 +75,12 @@ class PostController extends Controller
         $new_post->slug = $this->getFreeSlugFromTitle($new_post->title);
 
         $new_post->save();
-        
+
+        // linko i tags al nuovo post
+        if(isset($form_data['tags'])) {
+            $new_post->tags()->sync($form_data['tags']);
+        }
+
         return redirect()->route('admin.posts.show', ['post' => $new_post->id,'created' => 'yes']);
     } 
 
