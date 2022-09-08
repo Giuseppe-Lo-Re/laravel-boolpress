@@ -31,6 +31,47 @@
             </select>
         </div>
 
+        {{-- Tags --}}
+        <div class="mb-3">
+            <label for="tags">Tags:</label>
+
+            {{-- Stampo una checkbox per ogni tag --}}
+            @foreach ($tags as $tag)  
+            @if ($errors->any()) 
+                {{-- Se ci sono errori di validazione valuto la old() per capire dove mettere il checked --}}
+                <div class="form-check">
+                    <input class="form-check-input" 
+                    type="checkbox" 
+                    value="{{ $tag->id }}" 
+                    id="tag-{{ $tag->id }}" 
+                    name="tags[]"
+                    {{ in_array($tag->id, old('tags', [])) ? 'checked' : ''}}
+                    >
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </label>
+                </div>
+            
+            @else
+                {{-- altrimenti sto caricando la pagina per la prima volta e valuto la collection dei tags --}}
+                <div class="form-check">
+                    <input class="form-check-input" 
+                    type="checkbox" 
+                    value="{{ $tag->id }}" 
+                    id="tag-{{ $tag->id }}" 
+                    name="tags[]"
+                    {{ $post->tags->contains($tag) ? 'checked' : ''}}
+                    >
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </label>
+                </div>
+            
+            
+            @endif
+            @endforeach 
+        </div>
+        
         {{-- Title --}}
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>

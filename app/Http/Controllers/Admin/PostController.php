@@ -127,13 +127,16 @@ class PostController extends Controller
         // Raccolgo tutte le categorie
         $categories = Category::all();
 
+        // Raccolgo tutti i tags
+        $tags = Tag::all();
     
         $post = Post::findOrFail($id);
 
         // Salvo le variabili in un array che passerò alla view
         $data = [
             'post' => $post,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('admin.posts.edit', $data);
@@ -164,6 +167,12 @@ class PostController extends Controller
         // Aggiorno il post sul database con quello modificato dell'admin
         $post_to_update->update($form_data);
 
+        // Aggiorno i tag
+        if(isset($form_data['$tags'])) {
+            $post_to_update->tags()->sync($form_data['$tags']); 
+        }else {
+            $post_to_update->tags()->sync([]);
+        }
         // Reindirizzo l'admin alla pagina show
         return redirect()->route('admin.posts.show', ['post' => $post_to_update->id]);
     }
