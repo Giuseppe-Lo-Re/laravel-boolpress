@@ -188,6 +188,9 @@ class PostController extends Controller
         // Raccolgo tutti i post da eliminare attraverso l'id
         $post_to_delete = Post::findOrFail($id);
 
+        // Elimino la relazione coi tags
+        $post_to_delete->tags()->sync([]);
+        
         // Elimino il post da eliminare
         $post_to_delete->delete();
 
