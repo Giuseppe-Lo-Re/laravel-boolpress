@@ -8,6 +8,7 @@ use App\Post;
 use illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -45,8 +46,12 @@ class PostController extends Controller
         // Raccolgo tutte le categorie
         $categories = Category::all();
 
+        // Raccolgo tutti i tags
+        $tags = Tag::all();
+
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('admin.posts.create', $data);

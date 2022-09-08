@@ -34,16 +34,22 @@
     <div>
         Tags:
 
-        @if (!$post->tags->isEmpty()){
+        {{-- @if($post->tags->isNotEmpty()) {
             @foreach ($post->tags as $tag)
-                {{ $tag->name }} {{ !$loop->last ? ',' : '' }}
+                {{ $tag->name }}{{ !$loop->last ? ',' : ''}}
             @endforeach
         }
         @else
             nessuno
-        @endif
+        @endif --}}
+
+        @forelse ($post->tags as $tag)
+            {{ $tag->name }}{{ !$loop->last ? ',' : ''}}
+        @empty
+            nessuno
+        @endforelse
     </div>
-    
+
     {{-- Content --}}
     <h3 class="mt-3">Contenuto</h3> 
     <p>{{ $post->content }}</p>

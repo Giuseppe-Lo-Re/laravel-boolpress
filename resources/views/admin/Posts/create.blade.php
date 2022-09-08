@@ -26,8 +26,23 @@
                 {{-- Stampo id e name di categories nelle value --}}
                 @foreach ($categories as $category)     
                     <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                @endforeach
+                @endforeach 
             </select>
+        </div>
+
+        {{-- Tags --}}
+        <div class="mb-3">
+            <label for="tags">Tags:</label>
+
+            {{-- Stampo una checkbox per ogni tag --}}
+            @foreach ($tags as $tag)  
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->id }}" name="tags[]">
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </label>
+                </div>
+            @endforeach 
         </div>
 
         {{-- Title --}}
