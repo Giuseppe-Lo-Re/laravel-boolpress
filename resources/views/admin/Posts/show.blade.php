@@ -30,6 +30,10 @@
     {{-- Category --}}
     <div>Categoria: {{ $post->category ? $post->category->name : 'nessuna' }}</div>
     
+    {{-- Tags --}}
+    <div>
+        Tags: {{ dd($post->tags) }}
+    </div>
     {{-- Content --}}
     <h3 class="mt-3">Contenuto</h3> 
     <p>{{ $post->content }}</p>
