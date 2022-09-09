@@ -21,6 +21,9 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
+        // visualizza solo 6 post per pagina
+        $posts = Post::paginate(6);
+
         // raccolgo tutte le richieste 
         $request_info = $request->all();
 

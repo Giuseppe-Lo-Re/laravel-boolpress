@@ -27,5 +27,9 @@
             {{-- End Single Card --}}
         @endforeach
 
+        {{-- Page selector --}}
+        <div>
+            {{ $posts->links() }}
+        </div>
     </div>
 @endsection     
