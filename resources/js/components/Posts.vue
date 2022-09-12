@@ -9,7 +9,7 @@
 
                 <!-- Template Single Post -->
                 <div v-for="post in posts" :key="post.id" class="col">
-                    <div class="card mt-5" style="width: 18rem;"> 
+                    <div class="card mt-5"> 
                         <!-- <img src="..." class="card-img-top" alt="..."> -->
                         <div class="card-body">
                             <h5 class="card-title">{{post.title}}</h5>
