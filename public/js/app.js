@@ -1909,7 +1909,17 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Posts'
+  name: 'Posts',
+  data: function data() {
+    return {
+      pageTitle: 'I nostri Post:'
+    };
+  },
+  mounted: function mounted() {
+    axios.get('/api/posts').then(function (response) {
+      console.log(response);
+    });
+  }
 });
 
 /***/ }),
@@ -1949,10 +1959,37 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("h1", [_vm._v("lista post")]);
+  return _c("section", [_c("div", {
+    staticClass: "container"
+  }, [_c("h1", [_vm._v("\n            " + _vm._s(_vm.pageTitle) + "\n        ")]), _vm._v(" "), _vm._m(0)])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "row row-cols-3"
+  }, [_c("div", {
+    staticClass: "col"
+  }, [_c("div", {
+    staticClass: "card mt-5",
+    staticStyle: {
+      width: "18rem"
+    }
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "card-title"
+  }, [_vm._v("Card title")]), _vm._v(" "), _c("p", {
+    staticClass: "card-text"
+  }, [_vm._v("Some quick example text to build on the card title and make up the bulk of the card's content.")]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Go somewhere")])])])])]);
+}];
 render._withStripped = true;
 
 
@@ -1973,7 +2010,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("main", [_c("h1", [_vm._v("VueJS ")]), _vm._v(" "), _c("Post")], 1);
+  return _c("main", [_c("Posts")], 1);
 };
 
 var staticRenderFns = [];

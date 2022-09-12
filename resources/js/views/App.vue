@@ -1,8 +1,6 @@
 <template>
     <main>
-        <h1>VueJS </h1>
-
-        <Post />
+        <Posts />
     </main>
 </template>
 
