@@ -27,6 +27,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// Includo AXIOS per inizializzare Vuejs
+ window.axios = require('axios');
+ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 import App from './views/App.vue';
 
 const app = new Vue({
