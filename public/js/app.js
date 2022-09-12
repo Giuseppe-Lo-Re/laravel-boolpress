@@ -2025,7 +2025,7 @@ var render = function render() {
         return _vm.getPosts(_vm.currentPaginationPage - 1);
       }
     }
-  }, [_vm._v("Previous")])]), _vm._v(" "), _vm._l(_vm.lastPaginationPage, function (pageNumber) {
+  }, [_vm._v("Previous\n                    ")])]), _vm._v(" "), _vm._l(_vm.lastPaginationPage, function (pageNumber) {
     return _c("li", {
       key: pageNumber,
       staticClass: "page-item",
@@ -2060,7 +2060,7 @@ var render = function render() {
         return _vm.getPosts(_vm.currentPaginationPage + 1);
       }
     }
-  }, [_vm._v("Next")])])], 2)])])]);
+  }, [_vm._v("Next\n                    ")])])], 2)])])]);
 };
 
 var staticRenderFns = [];

@@ -26,7 +26,14 @@
                 <ul class="pagination justify-content-center mt-5">
 
                     <!-- "Previous" Button -->
-                    <li class="page-item" :class="{ 'disabled' : currentPaginationPage == 1 }"><a class="page-link" @click.prevent="getPosts(currentPaginationPage - 1)" href="#">Previous</a></li>
+                    <li class="page-item" 
+                        :class="{ 'disabled' : currentPaginationPage == 1 }"
+                        >
+                        <a class="page-link" 
+                        @click.prevent="getPosts(currentPaginationPage - 1)" 
+                        href="#">Previous
+                        </a>
+                    </li>
                     
                     <!-- Page number Button -->
                     <li v-for="pageNumber in lastPaginationPage" 
@@ -44,7 +51,14 @@
                     
 
                     <!-- "Next" Button -->
-                    <li class="page-item disable" :class="{ 'disabled' : currentPaginationPage == lastPaginationPage }"><a class="page-link" @click.prevent="getPosts(currentPaginationPage + 1)" href="#">Next</a></li>
+                    <li class="page-item disable" 
+                        :class="{ 'disabled' : currentPaginationPage == lastPaginationPage }"
+                        >
+                        <a class="page-link" 
+                        @click.prevent="getPosts(currentPaginationPage + 1)" 
+                        href="#">Next
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
