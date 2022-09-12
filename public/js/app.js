@@ -1913,7 +1913,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       pageTitle: 'I nostri Post:',
-      posts: []
+      posts: [],
+      currentPaginationPage: 1,
+      lastPaginationPage: null
     };
   },
   methods: {
@@ -1924,11 +1926,18 @@ __webpack_require__.r(__webpack_exports__);
 
       return text;
     },
-    getPosts: function getPosts() {
+    getPosts: function getPosts(pageNumber) {
       var _this = this;
 
-      axios.get('/api/posts').then(function (response) {
-        _this.posts = response.data.results;
+      axios.get('/api/posts', {
+        // in alternativa: '/api/posts?page=' + pageNumber
+        params: {
+          page: pageNumber
+        }
+      }).then(function (response) {
+        _this.posts = response.data.results.data;
+        _this.currentPaginationPage = response.data.results.current_page;
+        _this.lastPaginationPage = response.data.results.last_page;
       });
     }
   },
@@ -1994,7 +2003,64 @@ var render = function render() {
     }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
     }, [_vm._v(_vm._s(_vm.truncateText(post.content)))])])])]);
-  }), 0)])]);
+  }), 0), _vm._v(" "), _c("nav", {
+    attrs: {
+      "aria-label": "Page navigation example"
+    }
+  }, [_c("ul", {
+    staticClass: "pagination justify-content-center mt-5"
+  }, [_c("li", {
+    staticClass: "page-item",
+    "class": {
+      disabled: _vm.currentPaginationPage == 1
+    }
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.getPosts(_vm.currentPaginationPage - 1);
+      }
+    }
+  }, [_vm._v("Previous")])]), _vm._v(" "), _vm._l(_vm.lastPaginationPage, function (pageNumber) {
+    return _c("li", {
+      key: pageNumber,
+      staticClass: "page-item",
+      "class": {
+        active: pageNumber == _vm.currentPaginationPage
+      }
+    }, [_c("a", {
+      staticClass: "page-link",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.getPosts(pageNumber);
+        }
+      }
+    }, [_vm._v("\n                        " + _vm._s(pageNumber) + "\n                    ")])]);
+  }), _vm._v(" "), _c("li", {
+    staticClass: "page-item disable",
+    "class": {
+      disabled: _vm.currentPaginationPage == _vm.lastPaginationPage
+    }
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.getPosts(_vm.currentPaginationPage + 1);
+      }
+    }
+  }, [_vm._v("Next")])])], 2)])])]);
 };
 
 var staticRenderFns = [];
