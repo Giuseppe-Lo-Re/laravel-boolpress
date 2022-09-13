@@ -12,7 +12,7 @@
             </h3>
 
             <h4 class="mt-5">
-                Vuoi dare un'occhiata ai nostri <router-link to="/blog">Post</router-link>?
+                Vuoi dare un'occhiata ai nostri <router-link :to="{name: 'blog'}">Post</router-link>?
             </h4>
         </div>
     </div>

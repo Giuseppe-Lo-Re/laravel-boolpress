@@ -1908,7 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderPage',
   data: function data() {
@@ -1965,6 +1964,10 @@ __webpack_require__.r(__webpack_exports__);
           page: pageNumber
         }
       }).then(function (response) {
+        // const {data, current_page, last_page} = response.data.results
+        // this.posts = data
+        // this.currentPaginationPage = current_page;
+        // this.lastPaginationPage = last_page;
         _this.posts = response.data.results.data;
         _this.currentPaginationPage = response.data.results.current_page;
         _this.lastPaginationPage = response.data.results.last_page;
@@ -2320,7 +2323,9 @@ var render = function render() {
     staticClass: "mt-5"
   }, [_vm._v("\n            Vuoi dare un'occhiata ai nostri "), _c("router-link", {
     attrs: {
-      to: "/blog"
+      to: {
+        name: "blog"
+      }
     }
   }, [_vm._v("Post")]), _vm._v("?\n        ")], 1)])], 1);
 };
@@ -53615,7 +53620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_HomePage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/HomePage.vue */ "./resources/js/pages/HomePage.vue");
 /* harmony import */ var _pages_AboutPage_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/AboutPage.vue */ "./resources/js/pages/AboutPage.vue");
 /* harmony import */ var _pages_BlogPage_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/BlogPage.vue */ "./resources/js/pages/BlogPage.vue");
-/* harmony import */ var _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue");
+/* harmony import */ var _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -53639,8 +53644,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _pages_BlogPage_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/*',
-    name: 'NotFound',
-    component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+    name: 'Not-found',
+    component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);

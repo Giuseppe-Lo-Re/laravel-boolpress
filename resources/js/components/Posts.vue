@@ -74,7 +74,7 @@ export default {
             title: 'I nostri Post',
             posts: [],
             currentPaginationPage: 1,
-            lastPaginationPage: null
+            lastPaginationPage: null,
         };
     },
     methods: {
@@ -91,9 +91,13 @@ export default {
                 }
             })
             .then((response) => {
-            this.posts = response.data.results.data;
-            this.currentPaginationPage = response.data.results.current_page;
-            this.lastPaginationPage = response.data.results.last_page;
+                // const {data, current_page, last_page} = response.data.results
+                // this.posts = data
+                // this.currentPaginationPage = current_page;
+                // this.lastPaginationPage = last_page;
+                this.posts = response.data.results.data;
+                this.currentPaginationPage = response.data.results.current_page;
+                this.lastPaginationPage = response.data.results.last_page; 
             });
         }
     },

@@ -28,7 +28,7 @@ const router = new VueRouter({
         },
         {
             path: '/*',
-            name: 'NotFound',
+            name: 'Not-found',
             component: NotFound
         },
     ]
