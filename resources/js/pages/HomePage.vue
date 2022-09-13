@@ -1,5 +1,7 @@
 <template>
-    <h1>sono la Homepage</h1>
+    <h2 class="mt-5 text-center">
+        Sono la Homepage
+    </h2>
 </template>
 
 <script>
