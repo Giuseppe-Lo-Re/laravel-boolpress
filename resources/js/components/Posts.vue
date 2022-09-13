@@ -1,7 +1,7 @@
 <template>
     <section>
-        <div class="container">
-            <h2>
+        <div >
+            <h2 class="mt-5 text-center">
                 {{ title }}
             </h2>
 
@@ -71,7 +71,7 @@ export default {
     name: 'Posts',
     data() {
         return {
-            title: 'I nostri Post:',
+            title: 'I nostri Post',
             posts: [],
             currentPaginationPage: 1,
             lastPaginationPage: null
