@@ -1912,7 +1912,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Posts',
   data: function data() {
     return {
-      pageTitle: 'I nostri Post:',
+      title: 'I nostri Post:',
       posts: [],
       currentPaginationPage: 1,
       lastPaginationPage: null
@@ -1985,17 +1985,14 @@ var render = function render() {
 
   return _c("section", [_c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("\n            " + _vm._s(_vm.pageTitle) + "\n        ")]), _vm._v(" "), _c("div", {
+  }, [_c("h2", [_vm._v("\n            " + _vm._s(_vm.title) + "\n        ")]), _vm._v(" "), _c("div", {
     staticClass: "row row-cols-3"
   }, _vm._l(_vm.posts, function (post) {
     return _c("div", {
       key: post.id,
       staticClass: "col"
     }, [_c("div", {
-      staticClass: "card mt-5",
-      staticStyle: {
-        width: "18rem"
-      }
+      staticClass: "card mt-5"
     }, [_c("div", {
       staticClass: "card-body"
     }, [_c("h5", {
