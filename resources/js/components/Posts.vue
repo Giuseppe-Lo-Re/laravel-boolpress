@@ -1,9 +1,9 @@
 <template>
     <section>
         <div class="container">
-            <h1>
-                {{ pageTitle }}
-            </h1>
+            <h2>
+                {{ title }}
+            </h2>
 
             <div class="row row-cols-3">
 
@@ -28,10 +28,10 @@
                     <!-- "Previous" Button -->
                     <li class="page-item" 
                         :class="{ 'disabled' : currentPaginationPage == 1 }"
-                        >
+                    >
                         <a class="page-link" 
-                        @click.prevent="getPosts(currentPaginationPage - 1)" 
-                        href="#">Previous
+                           @click.prevent="getPosts(currentPaginationPage - 1)" 
+                           href="#">Previous
                         </a>
                     </li>
                     
@@ -40,11 +40,11 @@
                         :key="pageNumber" 
                         class="page-item "
                         :class="{'active': pageNumber == currentPaginationPage }"
-                        >
+                    >
                         <a @click.prevent="getPosts(pageNumber)" 
-                            class="page-link " 
-                            href="#"
-                            >
+                           class="page-link " 
+                           href="#"
+                        >
                             {{ pageNumber }}
                         </a>
                     </li>
@@ -53,10 +53,10 @@
                     <!-- "Next" Button -->
                     <li class="page-item disable" 
                         :class="{ 'disabled' : currentPaginationPage == lastPaginationPage }"
-                        >
+                    >
                         <a class="page-link" 
-                        @click.prevent="getPosts(currentPaginationPage + 1)" 
-                        href="#">Next
+                           @click.prevent="getPosts(currentPaginationPage + 1)" 
+                           href="#">Next
                         </a>
                     </li>
                 </ul>
@@ -71,7 +71,7 @@ export default {
     name: 'Posts',
     data() {
         return {
-            pageTitle: 'I nostri Post:',
+            title: 'I nostri Post:',
             posts: [],
             currentPaginationPage: 1,
             lastPaginationPage: null
