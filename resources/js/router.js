@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import BlogPage from './pages/BlogPage';
 
 const router = new VueRouter({
     mode: 'history',
@@ -18,6 +19,11 @@ const router = new VueRouter({
             path: '/about',
             name: 'about',
             component: AboutPage
+        },
+        {
+            path: '/blog',
+            name: 'blog',
+            component: BlogPage
         },
     ]
 });
