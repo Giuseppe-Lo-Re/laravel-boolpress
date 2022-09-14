@@ -171,8 +171,8 @@ class PostController extends Controller
         $post_to_update->update($form_data);
 
         // Aggiorno i tag
-        if(isset($form_data['$tags'])) {
-            $post_to_update->tags()->sync($form_data['$tags']); 
+        if(isset($form_data['tags'])) {
+            $post_to_update->tags()->sync($form_data['tags']); 
         }else {
             $post_to_update->tags()->sync([]);
         }
