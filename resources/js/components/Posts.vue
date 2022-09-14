@@ -8,22 +8,8 @@
             <div class="row row-cols-3">
 
                 <!-- Template Single Post -->
-                <div v-for="post in posts" :key="post.id" class="col">
-                    <div class="card mt-5"> 
-                        <!-- <img src="..." class="card-img-top" alt="..."> -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{post.title}}</h5>
-                            <p class="card-text">{{truncateText(post.content)}}</p>
-                            <router-link 
-                                class="btn btn-primary" 
-                                :to="{ 
-                                    name: 'single-post', 
-                                    params: { slug: post.slug }}"
-                            >
-                                Leggi
-                            </router-link>
-                        </div>
-                    </div>
+                <div v-for="singlepost in posts" :key="singlepost.id" class="col">
+                    <PostDetails :post="singlepost"/>
                 </div>
             </div>
 
@@ -73,8 +59,13 @@
 
 <script>
 
+import PostDetails from './PostDetails.vue'
+
 export default {
     name: 'Posts',
+    components: {
+        PostDetails
+    },
     data() {
         return {
             title: 'I nostri Post',
@@ -84,12 +75,6 @@ export default {
         };
     },
     methods: {
-        truncateText(text) {
-            if(text.length > 100){
-              return text.slice(0, 100) + '...';  
-            }
-            return text;
-        },
         getPosts(pageNumber) {
             axios.get('/api/posts', { // in alternativa: '/api/posts?page=' + pageNumber
                 params: {
@@ -97,7 +82,7 @@ export default {
                 }
             })
             .then((response) => {
-                // const {data, current_page, last_page} = response.data.results
+                // const {data, current_page, last_page} = response.data.results  (alternativa con destrutturazione)
                 // this.posts = data
                 // this.currentPaginationPage = current_page;
                 // this.lastPaginationPage = last_page;
