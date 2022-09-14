@@ -2184,7 +2184,17 @@ var render = function render() {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(_vm.truncateText(post.content)))])])])]);
+    }, [_vm._v(_vm._s(_vm.truncateText(post.content)))]), _vm._v(" "), _c("router-link", {
+      staticClass: "btn btn-primary",
+      attrs: {
+        to: {
+          name: "single-post",
+          params: {
+            slug: post.slug
+          }
+        }
+      }
+    }, [_vm._v("\n                            Leggi\n                        ")])], 1)])]);
   }), 0), _vm._v(" "), _c("nav", {
     attrs: {
       "aria-label": "Page navigation example"
