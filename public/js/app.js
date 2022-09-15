@@ -2453,7 +2453,12 @@ var render = function render() {
     staticClass: "container mt-5"
   }, [_vm.post ? _c("div", [_c("h1", {
     staticClass: "text-center"
-  }, [_vm._v("\n            " + _vm._s(_vm.post.title) + "\n        ")]), _vm._v(" "), _vm.post.category ? _c("div", {
+  }, [_vm._v("\n            " + _vm._s(_vm.post.title) + "\n        ")]), _vm._v(" "), _vm.$post.cover ? _c("img", {
+    attrs: {
+      src: _vm.$post.cover,
+      alt: _vm.post.title
+    }
+  }) : _vm._e(), _vm._v(" "), _vm.post.category ? _c("div", {
     staticClass: "mt-5"
   }, [_vm._v("\n            Categoria: " + _vm._s(_vm.post.category.name) + "\n        ")]) : _vm._e(), _vm._v(" "), _vm.post.tags.length > 0 ? _c("div", {
     staticClass: "mt-2"

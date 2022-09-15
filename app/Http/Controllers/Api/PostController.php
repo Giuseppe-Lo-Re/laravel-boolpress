@@ -27,6 +27,12 @@ class PostController extends Controller
         // Cerco nel database il post con relativo slug con join per tags e category 
         $post = Post::where('slug', '=', $slug )->with(['tags', 'category'])->first();
 
+        // Se il post ha un'immagine
+        if ($post->cover) {
+            // Creo l'url assoluto
+            $post->cover = asset('storage/' . $post->cover);
+        }
+
         if($post) {
             $data = [
                 'success' => true,
