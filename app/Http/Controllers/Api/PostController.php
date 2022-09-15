@@ -13,6 +13,12 @@ class PostController extends Controller
         // Richiamo tutti i post
         $posts = Post::paginate(6);
 
+        foreach($posts as $post) {
+            if($post->cover) {
+                $post->cover = asset('storage/' . $post->cover);
+            }
+        }
+
         $data = [
             'success' => true,
             'results' => $posts
