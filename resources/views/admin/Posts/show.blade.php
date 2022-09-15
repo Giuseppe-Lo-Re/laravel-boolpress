@@ -13,7 +13,9 @@
     <h1>{{ $post->title }}</h1>
 
     {{-- Image --}}
-    <img src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }} ">
+    @if ($post->cover)
+        <img src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">
+    @endif
 
     {{-- Created at --}}
     <div>Creato: {{ $post->created_at->format('l, j F Y') }}, 
