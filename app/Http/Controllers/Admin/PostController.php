@@ -76,9 +76,9 @@ class PostController extends Controller
         // Se l'immagine è presente nel form_data
         if(isset($form_data['image'])) {
 
-            // salvo la foto del form_data nella cartella post-covers
+            // Carica la foto del form_data nella cartella post-covers e torna il path dell'immagine 
             $img_path = Storage::put('post-covers', $form_data['image']);
-            // e l'assegno al $form_data['cover'] per il fill($form_data) successivo
+            // creo una nuova chiave  per il fill($form_data) successivo
             $form_data['cover'] = $img_path;
         }
 
