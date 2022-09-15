@@ -83,8 +83,10 @@
             <label for="image" class="form-label">Immagine</label>
             <input class="form-control" type="file" id="image" name="image">
 
-            <div class="mt-3">Immagine presente:</div>
-            <img class="img-thumbnail w-25" src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">
+            @if ($post->cover)
+                <div class="mt-3">Immagine presente:</div>
+                <img class="img-thumbnail w-25" src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">
+            @endif
         </div>
         
         {{-- Content --}}

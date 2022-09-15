@@ -173,6 +173,20 @@ class PostController extends Controller
         // Genero un nuovo slug dal titolo solo se quest'ultimo è diverso dall'originale   
         $post_to_update = Post::findOrFail($id);
 
+        // Se l'immagine è già presente
+        if (isset($form_data['image'])) {
+            
+            if ($post_to_update->cover) {
+                // la cancello
+                Storage::delete($post_to_update->cover);
+            }
+
+            // Carica la foto del form_data nella cartella post-covers e torna il path dell'immagine 
+            $img_path = Storage::put('post-covers', $form_data['image']);
+            // creo una nuova chiave  per il fill($form_data) successivo
+            $form_data['cover'] = $img_path;
+        }
+
         if($form_data['title'] !== $post_to_update->title) {
             $form_data['slug'] = $this->getFreeSlugFromTitle($form_data['title']);
         } else {
@@ -201,6 +215,12 @@ class PostController extends Controller
     {
         // Raccolgo tutti i post da eliminare attraverso l'id
         $post_to_delete = Post::findOrFail($id);
+
+        // Se il post da eliminare ha una cover
+        if ($post_to_delete->cover) {
+            // la elimino
+            Storage::delete($post_to_delete->cover);
+        }
 
         // Elimino la relazione coi tags
         $post_to_delete->tags()->sync([]);
