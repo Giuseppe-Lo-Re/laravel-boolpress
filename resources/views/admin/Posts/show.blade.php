@@ -12,6 +12,9 @@
     {{-- Title --}}
     <h1>{{ $post->title }}</h1>
 
+    {{-- Image --}}
+    <img src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }} ">
+
     {{-- Created at --}}
     <div>Creato: {{ $post->created_at->format('l, j F Y') }}, 
         @if ($created_days_ago > 0)
