@@ -9,6 +9,7 @@ use illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -71,6 +72,16 @@ class PostController extends Controller
         $request->validate($this->getValidationRules());
 
         $form_data = $request->all();
+
+        // Se l'immagine è presente nel form_data
+        if(isset($form_data['image'])) {
+
+            // salvo la foto del form_data nella cartella post-covers
+            $img_path = Storage::put('post-covers', $form_data['image']);
+            // e l'assegno al $form_data['cover'] per il fill($form_data) successivo
+            $form_data['cover'] = $img_path;
+        }
+
         
         $new_post = new Post();
         $new_post->fill($form_data);
