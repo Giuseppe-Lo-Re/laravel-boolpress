@@ -30,6 +30,6 @@ export default {
             userEmail: '',
             userMessage: ''
         };
-    }
+    },
 }
 </script>
