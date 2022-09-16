@@ -2061,6 +2061,17 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: '',
       userMessage: ''
     };
+  },
+  methods: {
+    sendMessage: function sendMessage() {
+      axios.post('/api/leads', {
+        name: this.userName,
+        email: this.userEmail,
+        message: this.userMessage
+      }).then(function (response) {
+        console.log(response);
+      });
+    }
   }
 });
 
@@ -2426,7 +2437,14 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-5 text-center"
-  }, [_vm._v("\n        Contattaci\n    ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n        Contattaci\n    ")]), _vm._v(" "), _c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.sendMessage();
+      }
+    }
+  }, [_c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label",
@@ -2516,7 +2534,7 @@ var render = function render() {
       type: "submit",
       value: "invia"
     }
-  })]);
+  })])]);
 };
 
 var staticRenderFns = [];
