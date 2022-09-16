@@ -31,6 +31,10 @@ export default {
             name: 'about',
             label: 'About'
           },
+          {
+            name: 'contact',
+            label: 'Contattaci'
+          },
         ]
       }
    }
