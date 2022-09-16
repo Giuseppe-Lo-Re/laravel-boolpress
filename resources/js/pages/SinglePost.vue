@@ -51,6 +51,9 @@ export default {
               // Altrimenti se il post non è stato trovato reindirizziamo l'utente alla pagina 404
               this.$router.push({name: 'not-found'});
             }
+        })
+        .catch(err =>{
+          console.log(err);
         });
     }
 }  

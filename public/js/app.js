@@ -2100,6 +2100,8 @@ __webpack_require__.r(__webpack_exports__);
           name: 'not-found'
         });
       }
+    })["catch"](function (err) {
+      console.log(err);
     });
   }
 });
@@ -2459,9 +2461,9 @@ var render = function render() {
     staticClass: "container mt-5"
   }, [_vm.post ? _c("div", [_c("h1", {
     staticClass: "text-center"
-  }, [_vm._v("\n            " + _vm._s(_vm.post.title) + "\n        ")]), _vm._v(" "), _vm.$post.cover ? _c("img", {
+  }, [_vm._v("\n            " + _vm._s(_vm.post.title) + "\n        ")]), _vm._v(" "), _vm.post.cover ? _c("img", {
     attrs: {
-      src: _vm.$post.cover,
+      src: _vm.post.cover,
       alt: _vm.post.title
     }
   }) : _vm._e(), _vm._v(" "), _vm.post.category ? _c("div", {

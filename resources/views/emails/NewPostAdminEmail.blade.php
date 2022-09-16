@@ -11,7 +11,7 @@
         Buongiorno,
     </h2>
     <h3>
-        E' stato appena creato un nuovo post
+        E' stato appena creato un nuovo post!
     </h3>
 </body>
 </html>
