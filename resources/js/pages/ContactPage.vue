@@ -4,6 +4,10 @@
             Contattaci
         </h2>
 
+        <div v-if="success" class="alert alert-success" role="alert">
+            Messaggio inviato, grazie per averci contattato!
+        </div>
+
         <form @submit.prevent="sendMessage()">
             <div class="mb-3">
                 <label for="user-name" class="form-label">Nome</label>
@@ -30,7 +34,8 @@ export default {
         return {
             userName: '',
             userEmail: '',
-            userMessage: ''
+            userMessage: '',
+            success: false
         };
     },
     methods: {
@@ -41,7 +46,12 @@ export default {
                 message: this.userMessage
             })
             .then((response) => {
-                console.log(response);
+                 if(response.data.success) {
+                    this.userName = '';
+                    this.userEmail = '';
+                    this.userMessage = '';
+                    this.success = true;
+                 }
             });
         }
     }

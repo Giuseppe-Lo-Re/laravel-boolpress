@@ -2059,17 +2059,25 @@ __webpack_require__.r(__webpack_exports__);
     return {
       userName: '',
       userEmail: '',
-      userMessage: ''
+      userMessage: '',
+      success: false
     };
   },
   methods: {
     sendMessage: function sendMessage() {
+      var _this = this;
+
       axios.post('/api/leads', {
         name: this.userName,
         email: this.userEmail,
         message: this.userMessage
       }).then(function (response) {
-        console.log(response);
+        if (response.data.success) {
+          _this.userName = '';
+          _this.userEmail = '';
+          _this.userMessage = '';
+          _this.success = true;
+        }
       });
     }
   }
@@ -2437,7 +2445,12 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "mt-5 text-center"
-  }, [_vm._v("\n        Contattaci\n    ")]), _vm._v(" "), _c("form", {
+  }, [_vm._v("\n        Contattaci\n    ")]), _vm._v(" "), _vm.success ? _c("div", {
+    staticClass: "alert alert-success",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n        Messaggio inviato, grazie per averci contattato!\n    ")]) : _vm._e(), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
