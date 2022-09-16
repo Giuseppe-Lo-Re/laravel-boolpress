@@ -7,11 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>
-        Buongiorno,
-    </h2>
     <h3>
-        E' stato appena creato un nuovo post!
+        Buongiorno,
+    </h3>
+    <h3>
+        E' stato appena creato un nuovo post dal titolo 
+        <a href="{{ route('admin.posts.show', ['post' => $new_post->id]) }}">
+            {{ $new_post->title }}
+        </a> 
     </h3>
 </body>
 </html>

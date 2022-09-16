@@ -98,7 +98,7 @@ class PostController extends Controller
         }
 
         // dopo il salvataggio del nuovo post invio la mail di notifica del nuovo post
-        Mail::to('admin@boolpress.it')->send(new NewPostAdminEmail());
+        Mail::to('admin@boolpress.it')->send(new NewPostAdminEmail($new_post));
 
         return redirect()->route('admin.posts.show', ['post' => $new_post->id,'created' => 'yes']);
     } 
