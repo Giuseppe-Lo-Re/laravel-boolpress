@@ -2060,7 +2060,8 @@ __webpack_require__.r(__webpack_exports__);
       userName: '',
       userEmail: '',
       userMessage: '',
-      success: false
+      success: false,
+      errors: {}
     };
   },
   methods: {
@@ -2077,6 +2078,8 @@ __webpack_require__.r(__webpack_exports__);
           _this.userEmail = '';
           _this.userMessage = '';
           _this.success = true;
+        } else {
+          _this.errors = response.data.errors;
         }
       });
     }
@@ -2450,11 +2453,11 @@ var render = function render() {
     attrs: {
       role: "alert"
     }
-  }, [_vm._v("\n        Messaggio inviato, grazie per averci contattato!\n    ")]) : _vm._e(), _vm._v(" "), _c("form", {
+  }, [_vm._v("\n        Il messaggio è stato inviato, grazie per averci contattato!\n    ")]) : _vm._e(), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.sendMessage();
+        return _vm.sendMessage.apply(null, arguments);
       }
     }
   }, [_c("div", {
@@ -2485,7 +2488,22 @@ var render = function render() {
         _vm.userName = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "id",
+      rawName: "v-id",
+      value: _vm.errors.name,
+      expression: "errors.name"
+    }]
+  }, _vm._l(_vm.errors.name, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "alert alert-danger",
+      attrs: {
+        role: "alert"
+      }
+    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label",
@@ -2513,7 +2531,22 @@ var render = function render() {
         _vm.userEmail = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "id",
+      rawName: "v-id",
+      value: _vm.errors.mail,
+      expression: "errors.mail"
+    }]
+  }, _vm._l(_vm.errors.mail, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "alert alert-danger",
+      attrs: {
+        role: "alert"
+      }
+    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label",
@@ -2541,7 +2574,22 @@ var render = function render() {
         _vm.userMessage = $event.target.value;
       }
     }
-  })]), _vm._v(" "), _c("input", {
+  }), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "id",
+      rawName: "v-id",
+      value: _vm.errors.message,
+      expression: "errors.message"
+    }]
+  }, _vm._l(_vm.errors.message, function (error, index) {
+    return _c("div", {
+      key: index,
+      staticClass: "alert alert-danger",
+      attrs: {
+        role: "alert"
+      }
+    }, [_vm._v("\n                    " + _vm._s(error) + "\n                ")]);
+  }), 0)]), _vm._v(" "), _c("input", {
     staticClass: "btn btn-success",
     attrs: {
       type: "submit",
