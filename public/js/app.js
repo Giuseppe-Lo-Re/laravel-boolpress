@@ -2061,13 +2061,15 @@ __webpack_require__.r(__webpack_exports__);
       userEmail: '',
       userMessage: '',
       success: false,
-      errors: {}
+      errors: {},
+      sending: false
     };
   },
   methods: {
     sendMessage: function sendMessage() {
       var _this = this;
 
+      this.sending = true;
       axios.post('/api/leads', {
         name: this.userName,
         email: this.userEmail,
@@ -2078,9 +2080,12 @@ __webpack_require__.r(__webpack_exports__);
           _this.userEmail = '';
           _this.userMessage = '';
           _this.success = true;
+          _this.errors = {};
         } else {
           _this.errors = response.data.errors;
         }
+
+        _this.sending = false;
       });
     }
   }
@@ -2593,7 +2598,8 @@ var render = function render() {
     staticClass: "btn btn-success",
     attrs: {
       type: "submit",
-      value: "invia"
+      value: "invia",
+      disabled: _vm.sending
     }
   })])]);
 };
