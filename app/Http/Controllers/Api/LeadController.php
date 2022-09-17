@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Lead;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactThanks;
 
 class LeadController extends Controller
 {
@@ -29,6 +31,9 @@ class LeadController extends Controller
         $new_lead = new Lead();
         $new_lead->fill($data);
         $new_lead->save();
+
+        // Invio la mail di ringraziamento
+        Mail::to($data['email'])->send(new ContactThanks());
 
         return response()->json([
             'success' => true
